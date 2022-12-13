@@ -3,6 +3,7 @@ package com.example.basicscodelab
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -19,22 +20,29 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BasicsCodelabTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                MyApp(modifier = Modifier.fillMaxSize())
             }
         }
     }
 }
 
 @Composable
+private fun MyApp(modifier: Modifier = Modifier) {
+    Surface(
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.background
+    ) {
+        Greeting(name = "Android 2")
+    }
+}
+
+@Composable
 fun Greeting(name: String) {
     Surface(color = MaterialTheme.colorScheme.primary) {
-        Text (text = "Hello $name!", modifier = Modifier.padding(24.dp))
+        Column(modifier = Modifier.padding(24.dp)) {
+            Text (text = "Hello,")
+            Text (text = "$name!")
+        }
     }
 }
 
@@ -42,6 +50,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     BasicsCodelabTheme {
-        Greeting("Android")
+        MyApp()
     }
 }
