@@ -4,6 +4,7 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
@@ -71,15 +72,29 @@ fun Greeting(name: String) {
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(vertical = 4.dp, horizontal = 8.dp)
     ) {
-        Row(modifier = Modifier.padding(24.dp)) {
+        Row(modifier = Modifier
+            .padding(24.dp)
+            .animateContentSize(
+                animationSpec = spring(
+                    dampingRatio = Spring.DampingRatioMediumBouncy,
+                    stiffness = Spring.StiffnessLow
+                )
+            )
+        ) {
             Column(modifier = Modifier
                 .weight(1f)
-                .padding(bottom = extraPadding.coerceAtLeast(0.dp))
+                .padding(12.dp)
             ) {
                 Text(text = "Hello, ")
                 Text(text = name, style = MaterialTheme.typography.headlineMedium.copy(
                     fontWeight = FontWeight.ExtraBold
                 ))
+                if (expanded) {
+                    Text(
+                        text = ("Composem ipsum color sit lazy, " +
+                                "padding theme elit, sed do bouncy. ").repeat(4),
+                    )
+                }
             }
             IconButton(onClick = { expanded = !expanded }) {
                 Icon(
