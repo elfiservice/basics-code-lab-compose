@@ -59,26 +59,40 @@ fun CardContent(name: String) {
             .weight(1f)
             .padding(12.dp)
         ) {
-            Text(text = "Hello, ")
-            Text(text = name, style = MaterialTheme.typography.headlineMedium.copy(
-                fontWeight = FontWeight.ExtraBold
-            ))
-            if (expanded) {
-                Text(
-                    text = ("Composem ipsum color sit lazy, " +
-                            "padding theme elit, sed do bouncy. ").repeat(4),
-                )
+            LeftContent(expanded, name)
+        }
+
+        RightContent(expanded, onClick = { expanded = !expanded })
+    }
+}
+
+@Composable
+private fun RightContent(isExpanded: Boolean, onClick: () -> Unit) {
+    IconButton(onClick = onClick) {
+        Icon(
+            imageVector = if (isExpanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+            contentDescription = if (isExpanded) {
+                stringResource(R.string.show_less)
+            } else {
+                stringResource(R.string.show_more)
             }
-        }
-        IconButton(onClick = { expanded = !expanded }) {
-            Icon(
-                imageVector = if (expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
-                contentDescription = if (expanded) {
-                    stringResource(R.string.show_less)
-                } else {
-                    stringResource(R.string.show_more)
-                }
-            )
-        }
+        )
+    }
+}
+
+@Composable
+private fun LeftContent(
+    expanded: Boolean,
+    name: String,
+) {
+    Text(text = "Hello, ")
+    Text(text = name, style = MaterialTheme.typography.headlineMedium.copy(
+        fontWeight = FontWeight.ExtraBold
+    ))
+    if (expanded) {
+        Text(
+            text = ("Composem ipsum color sit lazy, " +
+                    "padding theme elit, sed do bouncy. ").repeat(4),
+        )
     }
 }
