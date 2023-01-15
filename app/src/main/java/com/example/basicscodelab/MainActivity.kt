@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.basicscodelab.ui.composeble.MyApp
+import com.example.basicscodelab.ui.composeble.basiclayouts.SearchBar
 import com.example.basicscodelab.ui.theme.BasicsCodelabTheme
 
 class MainActivity : ComponentActivity() {
@@ -15,7 +16,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BasicsCodelabTheme {
-                MyApp(modifier = Modifier.fillMaxSize())
+                SearchBar(modifier = Modifier.fillMaxSize())
             }
         }
     }
@@ -31,6 +32,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     BasicsCodelabTheme {
-        MyApp(Modifier.fillMaxSize())
+        SearchBar()
     }
 }
