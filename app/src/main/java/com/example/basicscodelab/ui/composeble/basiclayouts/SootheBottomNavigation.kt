@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.basicscodelab.R
 import com.example.basicscodelab.ui.theme.BasicsCodelabTheme
 
@@ -16,7 +17,8 @@ fun SootheBottomNavigation(modifier: Modifier = Modifier) {
 
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.background,
-        modifier = modifier
+        modifier = modifier,
+        tonalElevation = 5.dp
     ) {
         NavigationBarItem(
             icon = { Icon(Icons.Default.Spa, contentDescription = null) },
