@@ -12,6 +12,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 
 @Composable
 fun WellnessTaskItem(
@@ -40,7 +41,7 @@ fun WellnessTaskItem(
 
 @Composable
 fun WellnessTaskItem(taskName: String, modifier: Modifier = Modifier) {
-    var checkedState by remember { mutableStateOf(false) }
+    var checkedState by rememberSaveable { mutableStateOf(false) }
 
     WellnessTaskItem(
         taskName = taskName,
