@@ -3,7 +3,6 @@ package com.example.basicscodelab.ui.composeble.basicstate
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -12,6 +11,7 @@ import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.runtime.*
 
 @Composable
 fun WellnessTaskItem(
@@ -36,4 +36,17 @@ fun WellnessTaskItem(
             Icon(Icons.Filled.Close, contentDescription = "Close")
         }
     }
+}
+
+@Composable
+fun WellnessTaskItem(taskName: String, modifier: Modifier = Modifier) {
+    var checkedState by remember { mutableStateOf(false) }
+
+    WellnessTaskItem(
+        taskName = taskName,
+        checked = checkedState,
+        onCheckedChange = { newValue -> checkedState = newValue },
+        onClose = {}, // we will implement this later!
+        modifier = modifier,
+    )
 }
