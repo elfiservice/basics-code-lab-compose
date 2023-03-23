@@ -11,7 +11,7 @@ import com.example.basicscodelab.ui.composeble.basicstate.model.WellnessTask
 @Composable
 fun WellnessTasksList(
     modifier: Modifier = Modifier,
-    list: List<WellnessTask> = remember { getFakeWellnessTasks() }
+    list: List<WellnessTask>
 ) {
     LazyColumn(
         modifier = modifier
