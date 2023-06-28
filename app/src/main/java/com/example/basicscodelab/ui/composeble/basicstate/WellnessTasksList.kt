@@ -12,6 +12,7 @@ import com.example.basicscodelab.ui.composeble.basicstate.model.WellnessTask
 fun WellnessTasksList(
     modifier: Modifier = Modifier,
     list: List<WellnessTask>,
+    onCheckedTask: (WellnessTask, Boolean) -> Unit,
     onCloseTask: (WellnessTask) -> Unit
 ) {
     LazyColumn(
@@ -21,7 +22,12 @@ fun WellnessTasksList(
             items = list,
             key = { task -> task.id }
         ) { task ->
-            WellnessTaskItem(taskName = task.label, onClose = { onCloseTask(task) })
+            WellnessTaskItem(
+                taskName = task.label,
+                checked = task.checked,
+                onClose = { onCloseTask(task) },
+                onCheckedChange = { checked -> onCheckedTask(task, checked) },
+            )
         }
     }
 }
