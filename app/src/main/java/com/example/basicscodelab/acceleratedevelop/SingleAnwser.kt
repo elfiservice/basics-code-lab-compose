@@ -7,11 +7,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.basicscodelab.R
 
 // type: comp -> create a func composable
 @Composable
-fun SingleAnwser() {
+fun SingleAnswer() {
     //type WR -> create Row { }
     Row {
         //yellow Lamp and surround with Row
@@ -24,4 +25,11 @@ fun SingleAnwser() {
         }
     }
 
+}
+// type "prev" -> create base of Preview fun composable
+@Preview(fontScale = 1.5f)
+@Preview(showBackground = true, backgroundColor = 0XFFFFFFFF)
+@Composable
+fun SingleAnswerPreview() {
+    SingleAnswer()
 }
