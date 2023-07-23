@@ -12,7 +12,14 @@ fun WellnessScreen(
     wellnessViewModel: WellnessViewModel = viewModel()
 ) {
     Column(modifier = modifier) {
-        StatefulCounter()
+//        StatefulCounter()
+
+        Counter(
+            count = wellnessViewModel.waterCount,
+            incresWaterCount = {
+                 wellnessViewModel.incresWaterCount()
+            }
+        )
 
 //        val list = remember { getFakeWellnessTasks().toMutableStateList() } ** DO NOT KEEP STATE into COMPOSABLEs
         // https://developer.android.com/codelabs/jetpack-compose-state?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fjetpack-compose-for-android-developers-1%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-state#11

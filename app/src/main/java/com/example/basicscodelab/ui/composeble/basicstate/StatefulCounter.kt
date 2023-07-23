@@ -6,8 +6,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.runtime.*
 
+//@Composable
+//fun StatefulCounter(modifier: Modifier = Modifier) {
+//    var count by rememberSaveable { mutableStateOf(0) }
+//    StatelessCounter(count, { count++ }, modifier)
+//}
+
 @Composable
-fun StatefulCounter(modifier: Modifier = Modifier) {
-    var count by rememberSaveable { mutableStateOf(0) }
-    StatelessCounter(count, { count++ }, modifier)
+fun Counter(
+    count: Int,
+    incresWaterCount: () -> Unit,
+    modifier: Modifier = Modifier) {
+
+    StatelessCounter(count, incresWaterCount, modifier)
 }
